@@ -93,6 +93,8 @@ if __name__ == "__main__":
     showhistogram(img)
     img.close()
     """
+    
+  
     """
     #3-- histogram equalization
     equalized_image,original_hist_np,original_cdf_normalized,equalized_hist_np,equalized_cdf_normalized=equalizehistogram(img)
@@ -127,15 +129,17 @@ if __name__ == "__main__":
     plt.show()
     """
     
-    """
+    
     # Load the grayscale image
     image = Image.open("resources/road.jpg").convert("L")
     # Apply mean filter with a square mask of size 71x71
-    filtered_image = apply_mean_filter(image, mask_size=71)
+    #filtered_image = apply_mean_filter(image, mask_size=71)
+    filtered_image_naiive = apply_mean_filter_naive(image,mask_size=71)
 
     # Save the filtered image
-    filtered_image.save("road_mean_filtered.jpg")
+    #filtered_image.save("road_mean_filtered.jpg")
+    filtered_image_naiive.save("filterd_naiive.jpg")
 
     # Display the filtered image
-    filtered_image.show()
-    """
+    filtered_image_naiive.show()
+    

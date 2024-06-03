@@ -48,3 +48,26 @@ def apply_mean_filter(image, mask_size):
             output_image.putpixel((x, y), round(mean_intensity))
 
     return output_image
+
+def apply_mean_filter_naive(image, mask_size):
+    width, height = image.size
+    half_mask = mask_size // 2
+
+    pixels = image.load()
+    output_image = Image.new("L", (width, height))
+
+    for y in range(height):
+        for x in range(width):
+            sum_intensity = 0
+            count = 0
+            for ky in range(-half_mask, half_mask + 1):
+                for kx in range(-half_mask, half_mask + 1):
+                    nx, ny = x + kx, y + ky
+                    if 0 <= nx < width and 0 <= ny < height:
+                        sum_intensity += pixels[nx, ny]
+                        count += 1
+
+            mean_intensity = sum_intensity / count
+            output_image.putpixel((x, y), round(mean_intensity))
+
+    return output_image

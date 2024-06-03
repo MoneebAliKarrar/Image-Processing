@@ -1,4 +1,3 @@
-
 def printPixels(image):
     width, height = image.size
     pixels = image.load()
